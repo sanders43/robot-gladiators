@@ -10,7 +10,6 @@ let enemyNames = ["Roberto", "Amy Android", "Robo Trumble"];
 
 let fight = function(enemyName) {
     while(enemyHealth > 0 && playerHealth > 0) {
-    //window.alert("Welcome to Robot Gladiators!");
     promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter FIGHT or SKIP to choose!").toLowerCase();
     if (promptFight === "skip") {
         confirmSkip = window.confirm("Are you sure you'd like to skip? There is a penalty.");
@@ -42,7 +41,14 @@ let fight = function(enemyName) {
         
  
 for(var i = 0; i < enemyNames.length; i++) {
+    if (playerHealth > 0) {
+        window.alert(`Welcome to Robot Gladiators! Round ${(i + 1)}`);
+    
      pickedEnemyName = enemyNames[i];
     enemyHealth = 50;
     fight(pickedEnemyName);
+} else {
+    window.alert("You have lost your robot in battle! Game over!");
+    break;
+}
 }
