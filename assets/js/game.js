@@ -6,6 +6,7 @@ let enemyAttack = 12;
 let promptFight = "";
 let playerMoney = 10;
 let confirmSkip = "";
+let pickedEnemyName = "";
 let enemyNames = ["Roberto", "Amy Android", "Robo Trumble"];
 
 let fight = function(enemyName) {
@@ -39,16 +40,42 @@ let fight = function(enemyName) {
     }
 };
         
- 
+ //function to start game
+ const startGame = function() {
+     playerHealth = 100;
+     playerAttack = 10;
+     playerMoney = 10;
+
 for(var i = 0; i < enemyNames.length; i++) {
     if (playerHealth > 0) {
         window.alert(`Welcome to Robot Gladiators! Round ${(i + 1)}`);
     
-     pickedEnemyName = enemyNames[i];
+    pickedEnemyName = enemyNames[i];
+
     enemyHealth = 50;
+
     fight(pickedEnemyName);
 } else {
     window.alert("You have lost your robot in battle! Game over!");
     break;
-}
-}
+    }
+  }
+  endGame();
+ };
+
+ const endGame = () => {
+     if (playerHealth > 0) { 
+         window.alert(`Great job, you've survied the game! You now have a socre of ${playerMoney}.`);
+     } else {
+         window.alert("You have lost your robot in battle.");
+     }
+ let playAgainConfirm = window.confirm("Would you like to play again?");
+
+ if (playAgainConfirm) {
+     startGame();
+ } else {
+     window.alert("Thank you for playing Robot Gladiators!");
+ }
+};
+
+ startGame();
