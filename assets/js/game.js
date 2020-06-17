@@ -5,9 +5,11 @@ const randomNumber = (min,max) => {
     return value;
 };
 
+
+
 let fight = function(enemy) {
     while(enemy.Health > 0 && playerInfo.health > 0) {
-    let promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter FIGHT or SKIP to choose!").toLowerCase();
+    promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter FIGHT or SKIP to choose!").toLowerCase();
     if (promptFight === "skip") {
         confirmSkip = window.confirm("Are you sure you'd like to skip? There is a penalty.");
         if(confirmSkip) {
