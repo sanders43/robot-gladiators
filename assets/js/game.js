@@ -8,7 +8,7 @@ const randomNumber = (min,max) => {
 
 
 let fight = function(enemy) {
-    while(enemy.Health > 0 && playerInfo.health > 0) {
+    while(enemy.health > 0 && playerInfo.health > 0) {
     promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter FIGHT or SKIP to choose!").toLowerCase();
     if (promptFight === "skip") {
         confirmSkip = window.confirm("Are you sure you'd like to skip? There is a penalty.");
@@ -22,17 +22,17 @@ let fight = function(enemy) {
 
     let damage = randomNumber(playerInfo.attack-3, playerInfo.attack);
 
-    enemy.Health = Math.max(0,enemy.Health - damage);
-    console.log(`${playerInfo.name} attacked ${enemy.Name}. ${enemy.Name} now has ${enemy.Health} health remaining.`);
-    if (enemy.Health <= 0) {
-        window.alert(`${enemy.Name} has died!`);
+    enemy.health = Math.max(0,enemy.health - damage);
+    console.log(`${playerInfo.name} attacked ${enemy.name}. ${enemy.name} now has ${enemy.health} health remaining.`);
+    if (enemy.health <= 0) {
+        window.alert(`${enemy.name} has died!`);
         break;
     } else {
-        window.alert(`${enemy.Name} still has ${enemy.Health} health left.`);
+        window.alert(`${enemy.name} still has ${enemy.health} health left.`);
     }
-     damage = randomNumber(enemy.Attack-3,enemy.Attack);
+     damage = randomNumber(enemy.attack-3,enemy.attack);
     playerInfo.health = Math.max(0,playerInfo.health - damage);
-    console.log(`${enemy.Name} attacked ${playerInfo.name}. ${playerInfo.name} now has ${playerInfo.health} health remaining.`);
+    console.log(`${enemy.name} attacked ${playerInfo.name}. ${playerInfo.name} now has ${playerInfo.health} health remaining.`);
     if (playerInfo.health <= 0) {
         window.alert(`${playerInfo.name} has died!`);
         break; 
@@ -63,7 +63,7 @@ for(var i = 0; i < enemyInfo.length; i++) {
         if(storeConfirm) {
         shop();
     }
-};
+}
 
 } else {
     window.alert("You have lost your robot in battle! Game over!");
