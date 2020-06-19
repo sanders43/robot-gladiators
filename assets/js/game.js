@@ -100,19 +100,26 @@ for(var i = 0; i < enemyInfo.length; i++) {
  };
 
  const endGame = () => {
-     if (playerInfo.health > 0) { 
-         window.alert(`Great job, you've survied the game! You now have a score of ${playerInfo.money}.`);
-     } else {
-         window.alert("You have lost your robot in battle.");
+     window.alert("The game has ended! Let's see how you did.");
+     let highScore = localStorage.getItem("highscore");
+     if (highScore === null) {
+         highScore = 0;
      }
- let playAgainConfirm = window.confirm("Would you like to play again?");
+     if (playerInfo.money > highScore) {
+         localStorage.setItem("highscore", playerInfo.money);
+         localStorage.setItem("name", playerInfo.name);
+         window.alert(`${playerInfo.name} now has a high score of ${playerInfo.money}!`);
+     } else {
+         window.alert(`${playerInfo.name} did not beat the high score of ${highScore}. Maybe next time!`);
+     }
+     let playAgainConfirm = window.confirm("Would you like to play again?");
+     if (playAgainConfirm) {
+         startGame();
+     } else {
+         window.alert("Thank you for playing Battlebots! come back soon!");
+     }
+    };
 
- if (playAgainConfirm) {
-     startGame();
- } else {
-     window.alert("Thank you for playing Robot Gladiators!");
- }
-};
 
 const shop = () => {
 let shopOptionPrompt = window.prompt(`You have $${playerInfo.money}. Would you like to REFILL your health by 20 for $7, UPGRADE your attack by 6 for 7$, or LEAVE the store? Please enter 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE.`);
