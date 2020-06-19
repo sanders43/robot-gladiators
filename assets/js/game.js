@@ -20,7 +20,7 @@ let fight = function(enemy) {
         }
     }
 
-    let damage = randomNumber(playerInfo.attack-3, playerInfo.attack);
+    let damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
     enemy.health = Math.max(0,enemy.health - damage);
     console.log(`${playerInfo.name} attacked ${enemy.name}. ${enemy.name} now has ${enemy.health} health remaining.`);
@@ -90,15 +90,17 @@ for(var i = 0; i < enemyInfo.length; i++) {
 };
 
 const shop = () => {
-let shopOptionPrompt = window.prompt(`You have $${playerInfo.money}. Would you like to REFILL your health by 20 for $7, UPGRADE your attack by 6 for 7$, or LEAVE the store? Please choose one: REFILL, UPGRADE, or LEAVE.`).toLowerCase();
+let shopOptionPrompt = window.prompt(`You have $${playerInfo.money}. Would you like to REFILL your health by 20 for $7, UPGRADE your attack by 6 for 7$, or LEAVE the store? Please enter 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE.`);
+shopOptionPrompt = parseInt(shopOptionPrompt);
 switch(shopOptionPrompt) {
-    case "refill":
-        playerInfo.refillhealth();
+    
+    case 1:
+        playerInfo.refillHealth();
         break;
-    case "upgrade":
+    case 2:
         playerInfo.upgradeAttack();
         break;
-    case "leave":
+    case 3:
        window.alert("Leaving the store!")
        break;
     default:
